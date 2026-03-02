@@ -20,7 +20,9 @@
     <properties>
         <java.version>17</java.version>
         <checkstyle.version>10.12.4</checkstyle.version>
+        <cyclonedx.version>2.9.1</cyclonedx.version>
         <jacoco.version>0.8.11</jacoco.version>
+        <license-maven-plugin.version>2.7.1</license-maven-plugin.version>
         <pmd.version>6.55.0</pmd.version>
         <spotless.version>2.43.0</spotless.version>
     </properties>
@@ -60,6 +62,39 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${license-maven-plugin.version}</version>
+                <configuration>
+                    <excludedLicenses>
+                        <excludedLicense>GNU General Public License</excludedLicense>
+                        <excludedLicense>GNU General Public License (GPL)</excludedLicense>
+                        <excludedLicense>GNU General Public License v2.0</excludedLicense>
+                        <excludedLicense>GNU General Public License v3.0</excludedLicense>
+                        <excludedLicense>GNU General Public License, version 2 (GPL2)</excludedLicense>
+                        <excludedLicense>GNU General Public License, version 3 (GPL3)</excludedLicense>
+                        <excludedLicense>GNU General Public License, Version 2</excludedLicense>
+                        <excludedLicense>GNU General Public License, Version 3</excludedLicense>
+                        <excludedLicense>GPL-2.0</excludedLicense>
+                        <excludedLicense>GPL-3.0</excludedLicense>
+                        <excludedLicense>GPLv2</excludedLicense>
+                        <excludedLicense>GPLv3</excludedLicense>
+                    </excludedLicenses>
+                    <failOnBlacklist>true</failOnBlacklist>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.cyclonedx</groupId>
+                <artifactId>cyclonedx-maven-plugin</artifactId>
+                <version>${cyclonedx.version}</version>
+                <configuration>
+                    <includeBomSerialNumber>true</includeBomSerialNumber>
+                    <outputFormat>json</outputFormat>
+                    <outputName>sbom</outputName>
+                    <schemaVersion>1.5</schemaVersion>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>

@@ -3,6 +3,11 @@ minimum_pre_commit_version: "3.7.1"
 repos:
   - repo: local
     hooks:
+      - id: java-gpl-license-check
+        name: Java dependency GPL license check
+        entry: mvn -q license:add-third-party
+        language: system
+        pass_filenames: false
       - id: java-format-check
         name: Java format check (ruff format equivalent)
         entry: mvn -q spotless:check
