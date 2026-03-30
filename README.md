@@ -1,4 +1,4 @@
-# markdown-demo
+# Steelworks
 
 A documentation repository containing architectural decision records (ADRs) and design documentation for the Steelworks Project system.
 
